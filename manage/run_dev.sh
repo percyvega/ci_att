@@ -1,7 +1,14 @@
 #!/bin/bash
 
+. setVars_dev.sh
+if [ -z "$APP_NAME" ]
+then
+    echo "$APP_NAME cannot be empty."
+    exit
+fi
+
 cd ..
 
 java \
--Dci_att \
--jar target/ci_att-1.0-SNAPSHOT.jar
+-D$APP_NAME \
+-jar target/$APP_NAME-1.0-SNAPSHOT.jar
